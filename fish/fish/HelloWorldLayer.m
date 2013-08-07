@@ -70,9 +70,29 @@
     bg.position = ccp(512, 368);
     [self addChild:bg];
     
+    /*
+     SpriteFrame  对应 plist，包括纹理的大小，精灵Frame的origin   size   offset  OriginalSize， 哦还有名字
+     BatchNode   对应 图片 ， 如果没有Frame，则用 事先知道的rect得出单个精灵
+
+     BatchNode 继承自 Node， node继承自 NSObject
+     Layer 继承自 Node
+     layer  addChild：BatchNoe 不是直接加到Layer界面上来的， 只是加到Node 上，Node 是什么？
+     
+     
+     CCNode is the main element. Anything thats gets drawn or contains things that get drawn is a CCNode.
+     The most popular CCNodes are: CCScene, CCLayer, CCSprite, CCMenu.
+     
+     The main features of a CCNode are:
+     - They can contain other CCNode nodes (addChild, getChildByTag, removeChild, etc)
+     - They can schedule periodic callback (schedule, unschedule, etc)
+     - They can execute actions (runAction, stopAction, etc)
+     
+     
+    */
     [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"fish.plist"];
     fishSheet = [CCSpriteBatchNode batchNodeWithFile:@"fish.png"];
     [self addChild:fishSheet];
+    
     
     [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"fish2.plist"];
     fish2Sheet = [CCSpriteBatchNode batchNodeWithFile:@"fish2.png"];
